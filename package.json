@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/self-denial-cy/typescript-exercise.git"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/self-denial-cy/typescript-exercise/issues"
+  },
+  "homepage": "https://github.com/self-denial-cy/typescript-exercise#readme",
+  "devDependencies": {
+    "typescript": "^5.0.4"
+  }
+}
