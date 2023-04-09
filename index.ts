@@ -47,3 +47,16 @@ let cat: {
   eat
 }
 cat.type = '蓝猫'
+
+// 元组，就是固定长度的数组
+const tuple: [string, number] = ['this is tuple', 666]
+
+/**
+ * 枚举类型
+ * 枚举类型比较特殊，在编译结果中确实生成了 Gender 变量；
+ * 而不是像其它类型声明一样，在编译结果中被去除了
+ */
+enum Gender {
+  male,
+  female
+}
