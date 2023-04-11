@@ -48,6 +48,8 @@ let cat: {
 }
 cat.type = '蓝猫'
 
+cat.eat('鸡胸肉')
+
 // 元组，就是固定长度的数组
 const tuple: [string, number] = ['this is tuple', 666]
 

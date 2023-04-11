@@ -1,0 +1,10 @@
+{
+  // 显示推导得到的函数返回值类型
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  // 显示函数入参的名称
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  // 显示函数入参的类型
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  // 显示变量的类型
+  "typescript.inlayHints.variableTypes.enabled": true
+}
