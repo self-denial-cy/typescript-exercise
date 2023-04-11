@@ -60,3 +60,14 @@ enum Gender {
   male,
   female
 }
+
+interface Inter {
+  length: number;
+}
+
+function generic<T extends Inter>(param: T): T {
+  console.log(param.length)
+  return param
+}
+
+export { }
