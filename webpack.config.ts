@@ -17,6 +17,9 @@ const config: webpack.Configuration = {
       test: /\.ts$/,
       use: ['babel-loader', 'ts-loader'],
       exclude: /node_modules/
+    }, {
+      test: /\.less$/,
+      use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader']
     }]
   },
   plugins: [
