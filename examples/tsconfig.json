@@ -6,6 +6,7 @@
     "outDir": "./dist",
     "target": "ESNext",
     "module": "ESNext",
+    "strictNullChecks": false,
     "declaration": true,
     "types": [] // 不引入任何 @types
   }

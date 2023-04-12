@@ -68,7 +68,8 @@ class Dog extends Animal {
     this.breed = breed
   }
 
-  run(): void {
+  // 确保子类尝试覆盖的方法一定在父类中存在定义
+  override run(): void {
     super.run()
   }
 
