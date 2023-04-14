@@ -1,0 +1,41 @@
+{
+  "root": true,
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  },
+  "overrides": [
+    {
+      "files": [
+        "*.ts"
+      ],
+      "parser": "@typescript-eslint/parser",
+      "parserOptions": {
+        "ecmaVersion": "latest"
+      }
+    },
+    {
+      "files": [
+        "*.vue"
+      ],
+      "parser": "vue-eslint-parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "extraFileExtensions": [
+          ".vue"
+        ],
+        "ecmaVersion": "latest"
+      }
+    }
+  ],
+  "extends": [
+    "plugin:vue/vue3-recommended",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ]
+}

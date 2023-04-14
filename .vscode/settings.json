@@ -2,9 +2,22 @@
   // 显示推导得到的函数返回值类型
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
   // 显示函数入参的名称
-  "typescript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.parameterNames.enabled": "literals",
   // 显示函数入参的类型
   "typescript.inlayHints.parameterTypes.enabled": true,
   // 显示变量的类型
-  "typescript.inlayHints.variableTypes.enabled": true
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": true,
+  "eslint.probe": [
+    "typescript",
+    "vue"
+  ],
+  "eslint.validate": [
+    "typescript",
+    "vue"
+  ],
+  "files.eol": "\n"
 }
