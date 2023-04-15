@@ -42,7 +42,7 @@ const config: webpack.Configuration = {
     compress: true,
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.js', '.json'],
   },
 };
 

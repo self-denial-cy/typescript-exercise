@@ -4,7 +4,8 @@
   ],
   "compilerOptions": {
     "target": "ESNext",
-    "module": "ESNext"
+    "module": "ESNext",
+    "types": []
   },
   "ts-node": {
     "compilerOptions": {
