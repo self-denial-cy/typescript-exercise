@@ -1,6 +1,6 @@
 {
   "include": [
-    "*"
+    "src/**/*"
   ],
   "compilerOptions": {
     "outDir": "./dist",
@@ -8,5 +8,10 @@
     "module": "ESNext",
     "declaration": true,
     "types": [] // 不引入任何 @types
+  },
+  "ts-node": {
+    "compilerOptions": {
+      "module": "CommonJS"
+    }
   }
 }
