@@ -1,2 +1,1 @@
-import { fn } from './00-starter/index';
-fn();
+import './00-starter/index';

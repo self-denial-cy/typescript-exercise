@@ -32,6 +32,10 @@
       }
     }
   ],
+  "rules": {
+    "@typescript-eslint/no-unused-vars": 0,
+    "prefer-const": 0
+  },
   "extends": [
     "plugin:vue/vue3-recommended",
     "eslint:recommended",

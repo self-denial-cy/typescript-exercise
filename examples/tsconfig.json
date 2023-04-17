@@ -7,7 +7,8 @@
     "target": "ESNext",
     "module": "ESNext",
     "declaration": true,
-    "types": [] // 不引入任何 @types
+    "types": [],
+    "moduleResolution": "nodenext"
   },
   "ts-node": {
     "compilerOptions": {
