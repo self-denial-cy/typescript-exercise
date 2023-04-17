@@ -1,11 +1,13 @@
 {
   "scripts": {
-    "dev": "tsnd --respawn --transpile-only ./src/index.ts",
+    "tsnd-dev": "tsnd --respawn --transpile-only ./src/index.ts",
+    "ts-dev": "ts-node --emit --compilerHost ./src/index.ts",
     "tsc-build": "tsc",
     "tsc-watch": "tsc -w",
     "tsc-check": "tsc --noEmit"
   },
   "devDependencies": {
+    "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.0.4"
   }
