@@ -19,3 +19,6 @@ export type TupleLength = typeof arr6.length; // 1 | 2 | 3
 
 // 具名元组在 TypeScript 4.0 中开始支持
 export const arr7: [str: string, num: number, bool?: boolean] = ['this is a string', 66, true];
+
+export const arr8: string[] = [];
+const [ele1, ele2, ele3, ...rest1] = arr8; // 解构赋值导致隐式地越界访问

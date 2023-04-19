@@ -16,3 +16,5 @@ declare let bar: Bar;
  * 完全可以只在类型空间中【可以理解为用于存放 TypeScript 类型信息的内存空间】比较，只需要使用 declare 关键字
  */
 // foo = bar;
+
+export { Foo, Bar, foo, bar };
