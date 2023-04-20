@@ -37,6 +37,7 @@
     "@typescript-eslint/no-inferrable-types": 0,
     "@typescript-eslint/no-empty-function": 0,
     "@typescript-eslint/ban-types": 0,
+    "@typescript-eslint/prefer-as-const":0,
     "prefer-const": 0,
     "no-sparse-arrays": 0
   },

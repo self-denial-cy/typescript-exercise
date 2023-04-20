@@ -6,4 +6,6 @@ import { expectType, expectNotType } from 'tsd';
 expectType<string>('this is a string');
 expectNotType<string>(666);
 
+console.log('starter is ready');
+
 export {};
