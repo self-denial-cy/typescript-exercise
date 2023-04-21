@@ -48,3 +48,16 @@ export type FuncFoo = (name: string) => number;
 export const foo___: FuncFoo = (name) => {
   return name.length;
 };
+
+/**
+ * 如果只是为了描述函数的类型结构，甚至可以使用 interface 来进行函数的类型声明
+ * 这里的 interface 被称为 Callable Interface
+ */
+
+export interface FuncFooStruct {
+  (name: string): number;
+}
+
+export const foo____: FuncFooStruct = (name: string): number => {
+  return name.length;
+};
