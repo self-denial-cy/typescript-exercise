@@ -67,3 +67,40 @@ export const _Foo = class {
     this.prop = `${val}+A`;
   }
 };
+
+/**
+ * public 此类成员在类、类的实例、子类中都能被访问
+ * private 此类成员仅能在类的内部被访问
+ * protected 此类成员仅能在类与子类中被访问
+ * 当不显式地使用访问性修饰符时，成员的访问性默认为 public
+ */
+
+export class MofifiedFoo {
+  private prop: string;
+
+  constructor(inputProp: string) {
+    this.prop = inputProp;
+  }
+
+  protected print(addon: string): void {
+    console.log(`${this.prop} and ${addon}`);
+  }
+
+  public get propA(): string {
+    return `${this.prop}+A`;
+  }
+
+  public set propA(val: string) {
+    this.propA = `${val}+A`;
+  }
+}
+
+/**
+ * 在构造函数中对参数应用访问性修饰符会将参数直接作为类的成员【实例属性】，免去后续的手动赋值
+ */
+
+export class Foo2 {
+  constructor(public arg1: string, private arg2: boolean) {}
+}
+
+new Foo2('this is a string', true);
