@@ -32,3 +32,38 @@ v2 = v1;
 export function justThrow(): never {
   throw new Error('error');
 }
+
+/**
+ * 在类型流的分析中，一旦一个返回值类型为 never 的函数被调用，那么下方的代码都会被视为无效的代码【即无法执行到的 Dead Code】
+ */
+
+export function foo(input: number) {
+  if (input > 1) {
+    justThrow();
+    const name: string = 'this is a string';
+  }
+}
+
+/**
+ * 使用 never 进行显式地类型检查
+ * 假设，需要对一个联合类型的每个类型分支进行不同处理
+ */
+
+export type strOrNumOrBool = string | number | boolean;
+
+let strOrNumOrBoolVal: strOrNumOrBool;
+
+if (typeof strOrNumOrBoolVal === 'string') {
+  console.log('string');
+  strOrNumOrBoolVal.charAt(1);
+} else if (typeof strOrNumOrBoolVal === 'number') {
+  console.log('number');
+  strOrNumOrBoolVal.toFixed(2);
+} else if (typeof strOrNumOrBoolVal === 'boolean') {
+  console.log('boolean');
+  strOrNumOrBoolVal === true;
+} else {
+  // 到这里，strOrNumOrBoolVal 的类型只剩下 never 类型了，即一个无法再细分，本质上并不存在的虚空类型
+  const _exhaustiveCheck: never = strOrNumOrBoolVal;
+  throw new Error(`Unknown input type: ${_exhaustiveCheck}`);
+}
