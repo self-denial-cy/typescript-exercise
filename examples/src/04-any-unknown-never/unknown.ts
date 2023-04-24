@@ -23,3 +23,8 @@ export const unknownVal: unknown = unknownVar;
  */
 
 (unknownVal as { foo: () => {} }).foo();
+
+/**
+ * 在类型未知的情况下，更推荐使用 unknown 标注，这保证了类型检查的存在
+ * 当然在使用 unknown 类型时，可能会需要多写一些类型断言
+ */
