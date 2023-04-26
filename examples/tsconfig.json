@@ -8,8 +8,11 @@
     "module": "ESNext",
     "declaration": true,
     "strictNullChecks": false,
-    "types": [],
-    "moduleResolution": "nodenext"
+    "types": [
+      "node"
+    ],
+    "moduleResolution": "nodenext",
+    "allowSyntheticDefaultImports": true
   },
   "ts-node": {
     "compilerOptions": {
