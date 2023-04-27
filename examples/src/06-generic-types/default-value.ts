@@ -16,3 +16,14 @@ export type DefaultFactory = Factory; // string | number | boolean
  * 更复杂，如 { name: string } 是 {} 的子类型，因为在 {} 的基础上增加了额外的属性
  * 类似地，基类与派生类【父类与子类】也是如此
  */
+
+export type ResStatus<ResCode extends number = 10000> = ResCode extends 10000 | 10001 | 10002 ? 'success' : 'failure';
+
+export type Res0 = ResStatus;
+export type Res1 = ResStatus<10000>; // 'success'
+export type Res2 = ResStatus<20000>; // 'failure'
+// export type Res3 = ResStatus<'10000'>; // error
+
+/**
+ * 在 TypeScript 中，泛型参数存在默认约束【在函数泛型、Class 中泛型中也是】，这个默认约束值在 TS3.9 版本之前是 any，之后则是 unknown
+ */
