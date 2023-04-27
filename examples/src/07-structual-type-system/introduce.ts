@@ -125,3 +125,59 @@ class ShorthairCat extends Cat {}
  * C++、Java、Rust 等语言中都主要使用标称类型系统，但是也可以在 TypeScript 中模拟出标称类型系统
  * 要在 TypeScript 中实现，需要为类型额外附加元数据，但同时又需要保留原本的信息
  */
+
+// 在类型内存空间中声明了一个 TagProtector 的 Class 类型
+export declare class TagProtector<T extends string> {
+  protected __tag__: T;
+}
+
+export type Nominal<T, U extends string> = T & TagProtector<U>;
+
+/**
+ * 以上，通过交叉类型的方式来实现信息的附加
+ * 使用 declare class 在类型内存空间中声明了 TagProtector 类，它有一个具有 protected 属性的 __tag__，使用它来携带额外的信息
+ * 并和原本的类型合并到一起，就得到了 Nominal 工具类型
+ */
+
+export type _CNY = Nominal<number, 'CNY'>;
+export type _USD = Nominal<number, 'USD'>;
+
+// 还得需要配合类型断言使用
+const _CNYCount = 100 as _CNY;
+const _USDCount = 100 as _USD;
+
+function _addCNY(source: _CNY, input: _CNY) {
+  return (source + input) as _CNY;
+}
+
+// _addCNY(_CNYCount, _USDCount); // error
+
+/**
+ * 以上，本质上只在类型层面做了数据的处理，在运行时无法进行进一步的限制，可以从逻辑层面入手进一步确保安全性
+ */
+
+export class CNY_ {
+  private __tag__: void;
+
+  constructor(public value: number) {}
+}
+
+export class USD_ {
+  private __tag__: void;
+
+  constructor(public value: number) {}
+}
+
+const CNYCount_ = new CNY_(100);
+const USDCount_ = new USD_(100);
+
+function addCNY_(source: CNY_, input: CNY_) {
+  return source.value + input.value;
+}
+
+// addCNY_(CNYCount_, USDCount_); // error
+
+/**
+ * 以上，通过这种方式，可以在运行时添加更多的检查逻辑，同时在类型层面也得到了保障
+ * 这两种方式的本质都是通过额外属性实现了类型信息的附加，从而模拟出标称类型系统
+ */
