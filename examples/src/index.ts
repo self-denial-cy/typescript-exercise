@@ -7,3 +7,4 @@ import './05-internal-type-tools/index';
 import './06-generic-types/index';
 import './07-structual-type-system/index';
 import './08-type-levels/index';
+import './09-conditional-types/index';
