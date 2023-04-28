@@ -6,3 +6,4 @@ import './04-any-unknown-never/index';
 import './05-internal-type-tools/index';
 import './06-generic-types/index';
 import './07-structual-type-system/index';
+import './08-type-levels/index';
