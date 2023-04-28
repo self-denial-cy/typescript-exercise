@@ -181,3 +181,31 @@ function addCNY_(source: CNY_, input: CNY_) {
  * 以上，通过这种方式，可以在运行时添加更多的检查逻辑，同时在类型层面也得到了保障
  * 这两种方式的本质都是通过额外属性实现了类型信息的附加，从而模拟出标称类型系统
  */
+
+/**
+ * 在 type-fest 中也通过 Opaque Type 支持了类似的功能，实现如下
+ */
+
+// export const tag: unique symbol = Symbol('unique');
+// export const _tag = '_tag';
+
+/**
+ * 观察编译结果可发现，Tagged 中其实只需要 tag、_tag 变量的类型信息，且运行时也不需要实际的 tag、_tag 值【毕竟这里的 Tagged
+ * 也只是为了附加类型信息，并不参与实际运行】
+ * 因此可以将 tag、_tag 直接声明在类型内存空间中，而不是在值空间中
+ */
+
+export declare const tag: unique symbol;
+export declare const _tag: '_tag';
+
+export type Tagged<Token> = {
+  readonly [tag]: Token;
+  readonly [_tag]: Token;
+  readonly tag_: Token;
+};
+
+export type Opaque<Type, Token = unknown> = Type & Tagged<Token>;
+
+export let opaqueVal = 100 as Opaque<number, 'token'>;
+
+opaqueVal = 100 as Opaque<number, 'token'>;
