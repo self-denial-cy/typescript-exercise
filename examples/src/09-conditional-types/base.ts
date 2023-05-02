@@ -19,3 +19,20 @@ export type LiteralType<T> = T extends string
 export type Res1 = LiteralType<'this is a string'>;
 export type Res2 = LiteralType<666>;
 export type Res3 = LiteralType<true>;
+
+// 在函数中，条件类型与泛型的搭配同样很常见
+export function universalAdd<T extends number | bigint | string>(x: T, y: T): LiteralToPrimitive<T> {
+  return (x as any) + (y as any);
+}
+
+export type LiteralToPrimitive<T> = T extends number
+  ? number
+  : T extends bigint
+  ? bigint
+  : T extends string
+  ? string
+  : never;
+
+universalAdd(599, 1);
+universalAdd('599', '1');
+universalAdd(10n, 10n);
