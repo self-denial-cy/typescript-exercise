@@ -6,4 +6,36 @@
  * 通用的类型编程思路：将复杂的工具类型，拆解为由基础工具类型、类型工具的组合
  */
 
-export type MarkPropsAsOptional<T extends object, K extends keyof T = keyof T> = Partial<Pick<T, K>> & Omit<T, K>;
+import { Mutable } from '../10-builtin-tool-types/modifier';
+import { DeepNonNullable, DeepNullable } from './modifier';
+
+export type MarkPropsAsOptional<T extends object, K extends keyof T = keyof T> = Flatten<
+  Partial<Pick<T, K>> & Omit<T, K>
+>;
+
+// 辅助工具类型，帮助将交叉类型的结构展平为单层的对象结构
+export type Flatten<T> = {
+  [K in keyof T]: T[K];
+};
+
+type MarkPropsAsOptionalRes = MarkPropsAsOptional<
+  {
+    foo: string;
+    bar: number;
+    baz: boolean;
+  },
+  'bar' | 'baz'
+>;
+
+// 类似地，可以实现其它类型的部分修饰
+export type MarkPropsAsRequired<T extends object, K extends keyof T = keyof T> = Flatten<
+  Required<Pick<T, K>> & Omit<T, K>
+>;
+
+export type MarkPropsAsReadonly<T extends object, K extends keyof T = keyof T> = Flatten<
+  Readonly<Pick<T, K>> & Omit<T, K>
+>;
+
+export type MarkPropsAsMutable<T extends object, K extends keyof T = keyof T> = Flatten<
+  Mutable<Pick<T, K>> & Omit<T, K>
+>;
