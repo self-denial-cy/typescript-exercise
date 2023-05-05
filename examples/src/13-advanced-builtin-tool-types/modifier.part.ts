@@ -6,9 +6,6 @@
  * 通用的类型编程思路：将复杂的工具类型，拆解为由基础工具类型、类型工具的组合
  */
 
-import { Mutable } from '../10-builtin-tool-types/modifier';
-import { DeepNonNullable, DeepNullable } from './modifier';
-
 export type MarkPropsAsOptional<T extends object, K extends keyof T = keyof T> = Flatten<
   Partial<Pick<T, K>> & Omit<T, K>
 >;
@@ -36,6 +33,26 @@ export type MarkPropsAsReadonly<T extends object, K extends keyof T = keyof T> =
   Readonly<Pick<T, K>> & Omit<T, K>
 >;
 
+export type Mutable<T> = {
+  -readonly [P in keyof T]: T[P];
+};
+
 export type MarkPropsAsMutable<T extends object, K extends keyof T = keyof T> = Flatten<
   Mutable<Pick<T, K>> & Omit<T, K>
+>;
+
+export type Nullable<T> = {
+  [K in keyof T]: T[K] | null;
+};
+
+export type MarkPropsAsNullable<T extends object, K extends keyof T = keyof T> = Flatten<
+  Nullable<Pick<T, K>> & Omit<T, K>
+>;
+
+export type NonNullable<T> = {
+  [K in keyof T]: T[K] extends null | undefined ? never : T[K];
+};
+
+export type MarkPropsAsNonNullable<T extends object, K extends keyof T = keyof T> = Flatten<
+  NonNullable<Pick<T, K>> & Omit<T, K>
 >;
