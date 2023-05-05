@@ -34,8 +34,40 @@ export type Flatten<T> = {
 
 type Xor_ = Flatten<Without<Vip, Common> & Common>;
 type _Xor = Flatten<Without<Common, Vip> & Vip>;
+type Xor__ = Flatten<Without<Xor_ | _Xor, Visitor> & Visitor>;
+type __Xor = Flatten<Without<Visitor, Xor_ | _Xor>>;
 
 type User = Xor<Vip, Common>;
 const user: User = {
   vipExpires: 666,
 };
+
+// 再加上游客类型实现三个互斥属性
+export interface Visitor {
+  referType: string;
+}
+
+type XorUser = Xor<Xor<Vip, Common>, Visitor>;
+const xoruser: XorUser = {
+  vipExpires: 666,
+};
+
+// 还可以使用互斥类型实现绑定效果，即要么同时拥有 A、B 属性，要么一个属性都没有
+type XorStruct = Xor<
+  {},
+  {
+    foo: string;
+    bar: number;
+  }
+>;
+
+expectType<XorStruct>({});
+
+expectType<XorStruct>({
+  foo: 'this is a string',
+  bar: 666,
+});
+
+/**
+ * 互斥工具类型在很多实战场景下都有重要意义，它在联合类型的基础上添加了属性间的互斥逻辑，可以让接口结构更加精确了
+ */
