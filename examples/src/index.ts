@@ -12,3 +12,4 @@ import './10-builtin-tool-types/index';
 import './11-contextual-typing/index';
 import './12-covariance-and-contravariance/index';
 import './13-advanced-builtin-tool-types/index';
+import './14-template-string-type/index';
