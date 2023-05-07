@@ -13,10 +13,12 @@
   "editor.formatOnSave": false,
   "eslint.probe": [
     "typescript",
+    "javascript",
     "vue"
   ],
   "eslint.validate": [
     "typescript",
+    "javascript",
     "vue"
   ],
   "files.eol": "\n"
