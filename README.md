@@ -17,9 +17,3 @@
 ### 3. tsconfig.json 中的 ts-node 选项
 
 webpack 通过 require 根目录的 webpack.config.ts 文件获取配置，因为安装了 ts-node 包的原因，require 内部会先将 ts 编译为 js，但是 webpack 是遵循 CommonJS 规范的，因此需要告知 ts-node 将 ts 编译成符合 CommonJS 规范的 js
-
-### 4. 野生的 ts 文件
-
-野生的 ts 文件就是没有被 tsconfig.json 指定的范围包含到的 ts 文件，它遵循的类型检查配置就是 tsconfig.json 的默认配置，尤其是 module 选项，默认为 CommonJS 规范
-
-> 根目录的 webpack.config.ts 文件就是野生的，编辑器类型检查时，会按照 CommonJS 规范检查

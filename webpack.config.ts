@@ -1,15 +1,19 @@
-import * as path from 'path';
-import * as webpack from 'webpack';
-import * as HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from 'path';
+import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 // in case you run into any typescript error when configuring `devServer`
 import 'webpack-dev-server';
 
+function resolve(src: string): string {
+  return path.join(__dirname, src);
+}
+
 const config: webpack.Configuration = {
   mode: process.env.NODE_ENV === 'development' ? 'development' : 'production',
-  entry: path.join(__dirname, './src/main.ts'),
+  entry: resolve('./src/main.ts'),
   output: {
-    path: path.join(__dirname, './dist'),
+    path: resolve('./dist'),
     filename: '[name].js',
   },
   module: {
@@ -28,8 +32,8 @@ const config: webpack.Configuration = {
   plugins: [
     new HtmlWebpackPlugin({
       title: 'TypeScript',
-      template: path.join(__dirname, './index.html'),
-      favicon: path.join(__dirname, './favicon.ico'),
+      template: resolve('./index.html'),
+      favicon: resolve('./favicon.ico'),
       inject: true,
     }),
     new CleanWebpackPlugin(),
@@ -37,7 +41,7 @@ const config: webpack.Configuration = {
   devServer: {
     // open: true,
     static: {
-      directory: path.join(__dirname, './dist'),
+      directory: resolve('./dist'),
     },
     compress: true,
   },

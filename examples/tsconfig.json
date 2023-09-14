@@ -1,23 +1,21 @@
 {
   "include": [
-    "src/**/*"
+    "src/**/*.ts"
   ],
   "compilerOptions": {
     "outDir": "./dist",
     "target": "ESNext",
     "module": "ESNext",
+    "moduleResolution": "Bundler",
     "declaration": true,
     "strictNullChecks": false,
     "strictFunctionTypes": false,
-    "types": [
-      "node"
-    ],
-    "moduleResolution": "nodenext",
-    "allowSyntheticDefaultImports": true
+    "types": []
   },
   "ts-node": {
     "compilerOptions": {
-      "module": "CommonJS"
+      "module": "NodeNext",
+      "moduleResolution": "NodeNext"
     }
   }
 }
